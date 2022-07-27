@@ -1,10 +1,5 @@
-import jenkins.model.*
-
-def matchedJobs = Jenkins.instance.items.findAll { job ->
-    job.name =~ /test/
-}
-
-matchedJobs.each { job ->
-    println job.name
-    job.delete()
+for(j in jenkins.model.Jenkins.theInstance.getAllItems()){
+    if((j.fullName).contains("demo")){
+        j.delete()
+    }
 }
